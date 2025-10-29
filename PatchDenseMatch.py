@@ -13,8 +13,6 @@ from utils_function import *
 from core_function import *
 
 
-dataset_list = ["pika", "gen2", "sora"]
-
 def PatchDenseMatch(dataset_list):
     for dataset in dataset_list:
         # folder_path = "data/sora"

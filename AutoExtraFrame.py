@@ -10,10 +10,6 @@ import cv2
 import csv
 from utils_function import *
 
-#input
-
-video_list = ["sora", "pika", "gen2"]
-
 
 def AutoExtraFrame(video_list):
     for video in video_list:

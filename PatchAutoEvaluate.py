@@ -14,9 +14,6 @@ from utils_function import *
 from core_function import *
 
 
-
-video_list = ["sora", "pika", "gen2"]
-
 def PatchAutoEvaluate(video_list):
     interval_num_list = [60, 50, 40, 30, 20, 10]
     for dataset in video_list:

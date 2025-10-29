@@ -13,10 +13,6 @@ from utils_function import *
 from core_function import *
 
 
-
-dataset_list = ['sora', "gen2", "pika"]
-
-
 def PatchDrawMatch(dataset_list):
     for dataset in dataset_list:
         # folder_path = "data/sora"

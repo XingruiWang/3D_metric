@@ -13,9 +13,6 @@ from utils_function import *
 from core_function import *
 
 
-# input parameters
-
-video_list = ["sora", "pika", "gen2"]
 
 def AutoEvaluate(video_list):
     interval_num = 60
