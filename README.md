@@ -45,9 +45,42 @@ root
    ---pika
 ```
 ## Code
-### code usage
-```python
-python Eval_all.py
+
+### Requirements
+```bash
+pip install opencv-python numpy
+```
+
+### Code Usage
+
+#### Method 1: Command Line Interface (Recommended)
+
+Evaluate a single output video:
+```bash
+python Eval_all.py --output_video yucheng
+```
+
+Evaluate output video with ground truth comparison:
+```bash
+python Eval_all.py --output_video yucheng --gt_video gt
+```
+
+
+
+### Command Line Arguments
+
+- `--output_video`: (Required) Name of the output video folder to evaluate (e.g., "yucheng", "sora", "pika")
+- `--gt_video`: (Optional) Name of the ground truth video folder for comparison (e.g., "gt")
+
+### Input Data Structure
+
+Your video files should be organized as follows:
+```
+data/
+├── your_video_name/
+│   └── video_file.mp4
+├── gt/  (optional, for ground truth)
+│   └── gt_video_file.mp4
 ```
 ## Software
 ### software whl download link:
@@ -71,34 +104,68 @@ PatchAutoEvaluate(video_list)
 PatchDenseMatch(video_list)
 PatchDrawMatch(video_list)
 ```
-## Result
-```python
-```python
-root
-|
----xxx.py
----XXX.py
----data
-   |
-   ---sora
-   |
-   ---------brief_result
-   ---------full_result
-   ---------image_result
-   |
-   ---gen2
-   |
-   ---------brief_result
-   ---------full_result
-   ---------image_result
-   |
-   ---pika
-   |
-   ---------brief_result
-   ---------full_result
-   ---------image_result
+## Results
+
+### Output Structure
+
+After running the evaluation, results will be organized as follows:
+
 ```
+data/
+├── your_video_name/
+│   ├── frame_images/              # Extracted video frames
+│   │   └── video_name/
+│   │       ├── frame_0.png
+│   │       ├── frame_1.png
+│   │       └── ...
+│   ├── brief_result/              # Summary metrics (CSV files)
+│   │   └── 60_3_err_whole.csv    # Overall evaluation metrics
+│   ├── full_result/               # Detailed per-frame results
+│   │   └── video_name/
+│   │       └── 60_3_err.csv      # Frame-by-frame error metrics
+│   ├── image_result/              # Visualization images
+│   │   └── video_name/
+│   │       ├── matching_*.png    # Feature matching visualizations
+│   │       └── depth_*.png       # Depth map visualizations
+│   └── info.csv                   # Video metadata (fps, frames, etc.)
 ```
+
+### Understanding the Results
+
+#### Brief Result Files (`brief_result/`)
+- **File format**: `{interval}_{ransac_threshold}_err_whole.csv`
+- **Content**: Aggregated metrics across all frame pairs
+- **Columns**:
+  - `data_name`: Video name
+  - `mean_error`: Average epipolar geometry error
+  - `median_error`: Median error
+  - `rmse`: Root mean squared error
+  - `mae`: Mean absolute error
+  - `keep_rate`: Percentage of inlier matches (higher = better geometric consistency)
+  - `num_inliers_F`: Average number of valid feature matches
+  - `num_pts`: Average total number of feature points
+
+#### Full Result Files (`full_result/`)
+- **File format**: `{interval}_{ransac_threshold}_err.csv`
+- **Content**: Detailed metrics for each frame pair
+- **Columns**: Same as brief result, but per frame pair
+
+#### Key Metrics
+- **Lower error values** (mean_error, rmse, mae) = Better geometric consistency
+- **Higher keep_rate** (closer to 1.0) = More geometrically consistent video
+- **More num_inliers_F** = Better feature matching quality
+
+### Example Results Interpretation
+
+```csv
+data_name,mean_error,median_error,rmse,mae,keep_rate,num_inliers_F,num_pts
+Yucheng 2025-10-10 16.16.16,2.5,2.1,3.2,2.5,0.85,1500,1800
+```
+
+This means:
+- The video has an average epipolar error of 2.5 pixels
+- 85% of feature matches satisfy geometric constraints (good consistency)
+- Successfully matched 1500 valid point correspondences per frame pair
 ## Media report
 用 Sora 影片建 3D！ https://www.youtube.com/watch?v=X6n5ZCc7yy0 
 
