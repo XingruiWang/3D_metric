@@ -26,24 +26,6 @@ https://sora-geometrical-consistency.github.io/
  <img src="img/recon.png" width="80%">
 </div>
 
-
-## Data
-### data download link:
-https://drive.google.com/file/d/1E_7DR_DIvvWtDXn5KXUwXfBIA_3MhBMG/view?usp=drive_link
-place the data file as fllows:
-```python
-root
-|
----xxx.py
----XXX.py
----data
-   |
-   ---sora
-   |
-   ---gen2
-   |
-   ---pika
-```
 ## Code
 
 ### Requirements
@@ -81,6 +63,24 @@ data/
 │   └── video_file.mp4
 ├── gt/  (optional, for ground truth)
 │   └── gt_video_file.mp4
+```
+
+## Sora Data
+### data download link:
+https://drive.google.com/file/d/1E_7DR_DIvvWtDXn5KXUwXfBIA_3MhBMG/view?usp=drive_link
+place the data file as fllows:
+```python
+root
+|
+---xxx.py
+---XXX.py
+---data
+   |
+   ---sora
+   |
+   ---gen2
+   |
+   ---pika
 ```
 
 ## Results
