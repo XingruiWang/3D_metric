@@ -26,24 +26,6 @@ https://sora-geometrical-consistency.github.io/
  <img src="img/recon.png" width="80%">
 </div>
 
-
-## Data
-### data download link:
-https://drive.google.com/file/d/1E_7DR_DIvvWtDXn5KXUwXfBIA_3MhBMG/view?usp=drive_link
-place the data file as fllows:
-```python
-root
-|
----xxx.py
----XXX.py
----data
-   |
-   ---sora
-   |
-   ---gen2
-   |
-   ---pika
-```
 ## Code
 
 ### Requirements
@@ -53,7 +35,7 @@ pip install opencv-python numpy
 
 ### Code Usage
 
-#### Method 1: Command Line Interface (Recommended)
+#### Command Line Interface (Recommended)
 
 Evaluate a single output video:
 ```bash
@@ -82,28 +64,25 @@ data/
 ├── gt/  (optional, for ground truth)
 │   └── gt_video_file.mp4
 ```
-## Software
-### software whl download link:
-https://drive.google.com/file/d/1scoJ-mLoZ_3ZkrALQfdwwnw-0Q30NB5e/view?usp=drive_link
-### install:
+
+## Sora Data
+### data download link:
+https://drive.google.com/file/d/1E_7DR_DIvvWtDXn5KXUwXfBIA_3MhBMG/view?usp=drive_link
+place the data file as fllows:
 ```python
-pip install GVGC-0.0.1-py3-none-any.whl
+root
+|
+---xxx.py
+---XXX.py
+---data
+   |
+   ---sora
+   |
+   ---gen2
+   |
+   ---pika
 ```
 
-### software usage:
-```python
-#!/usr/bin/env python3
-from AutoExtraFrame import AutoExtraFrame
-from PatchAutoEvaluate import PatchAutoEvaluate
-from PatchDenseMatch import PatchDenseMatch
-from PatchDrawMatch import PatchDrawMatch
-
-video_list = ["sora", "pika", "gen2"]
-AutoExtraFrame(video_list)
-PatchAutoEvaluate(video_list)
-PatchDenseMatch(video_list)
-PatchDrawMatch(video_list)
-```
 ## Results
 
 ### Output Structure
